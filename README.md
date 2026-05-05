@@ -4,12 +4,14 @@ Island for Android
 
 ## Build Instructions
 
-Island depends on ["deagle" library](https://github.com/oasisfeng/deagle), which must be cloned alongside Island in the same path.
+Island is now self-contained. Clone this repository only.
 
-```
-\--
-  \- island
-  \- deagle
+Before building, make sure the Android SDK is installed and available through either `local.properties` (`sdk.dir=...`) or the `ANDROID_HOME` environment variable.
+
+Typical debug build command:
+
+```bash
+./gradlew.bat :assembly:assembleCompleteDebug
 ```
 
 This project is constructed into several modules, with **assembly** module as the build portal,
