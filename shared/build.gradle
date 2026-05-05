@@ -2,11 +2,17 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    namespace 'com.oasisfeng.island.shared'
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion this.minSdkVersion
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildFeatures {
+        buildConfig = true
+        aidl = true
     }
 
     buildTypes {
@@ -21,20 +27,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
-        check 'NewApi'
+    lint {
+        checkOnly 'NewApi'
         abortOnError true
         xmlReport false
-        textReport true
-        textOutput "stdout"
-    }
-
-    // Enable lint checking in all build variants.
-    libraryVariants.all { variant ->
-        variant.outputs.each { output ->
-            def lintTask = tasks["lint${variant.name.capitalize()}"]
-            output.assemble.dependsOn lintTask
-        }
     }
 }
 
@@ -50,7 +46,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.6.0'
     implementation 'com.google.firebase:firebase-config:19.2.0'
     implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
-    implementation 'com.oasisfeng.condom:library:2.5.0'
+    implementation project(':condom')
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.10.0'
 

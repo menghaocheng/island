@@ -16,5 +16,13 @@
 local.gradle
 build
 
+# Local debug outputs
+/.vscode/
+*.hprof
+*.log
+/dump*.xml
+/logcat_full.txt
+/QQ*.png
+
 # OSX files
 .DS_Store

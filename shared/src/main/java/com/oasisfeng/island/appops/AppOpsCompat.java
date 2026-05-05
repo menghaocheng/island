@@ -65,8 +65,10 @@ public class AppOpsCompat {
 	}
 
 	public int opToDefaultMode(final int op) {
-		final int default_mode = mAppOpsManager.opToDefaultMode(op);
-		if (default_mode >= 0) return default_mode;
+		try {
+			final int default_mode = mAppOpsManager.opToDefaultMode(op);
+			if (default_mode >= 0) return default_mode;
+		} catch (final Exception ignored) {}		// Method might not exist in some Android versions
 		return op >= sOpDefaultMode.length ? AppOpsManager.MODE_ALLOWED : sOpDefaultMode[op];	// Fallback local map
 	}
 

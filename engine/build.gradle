@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace 'com.oasisfeng.island.engine'
     compileSdkVersion this.compileSdkVersion
 
     defaultConfig {
@@ -17,12 +18,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
-        check 'NewApi'
+    buildFeatures {
+        buildConfig = true
+    }
+
+    lint {
+        checkOnly 'NewApi'
         abortOnError false
         xmlReport false
-        textReport true
-        textOutput "stdout"
     }
 }
 

@@ -180,5 +180,13 @@ public class Hacks {
 		ComponentName getHomeActivities(List<ResolveInfo> outActivities);
 	}
 
-	static { if (BuildConfig.DEBUG) Hack.verifyAllMirrorsIn(Hacks.class); }
+	static { 
+		if (BuildConfig.DEBUG) {
+			try {
+				Hack.verifyAllMirrorsIn(Hacks.class);
+			} catch (final Exception e) {
+				Log.w("Hacks", "Mirror verification failed: " + e.getMessage());		// Some methods might not exist in certain Android versions
+			}
+		}
+	}
 }

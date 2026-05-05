@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.oasisfeng.island.fileprovider'
     compileSdkVersion this.compileSdkVersion
 
     defaultConfig {
@@ -12,14 +13,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
-android.libraryVariants.all { variant ->
-    String taskName = String.format("remove%sStubClasses", variant.name.capitalize())
-    task "${taskName}" {
-        doLast { delete "${buildDir}/intermediates/classes/${variant.name}" + "/android" }
+    buildFeatures {
+        buildConfig = true
     }
-    variant.processJavaResources.dependsOn(taskName)
 }
 
 dependencies {

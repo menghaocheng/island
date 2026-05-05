@@ -6,10 +6,9 @@ import androidx.annotation.NonNull;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import com.oasisfeng.android.util.Supplier;
 import com.oasisfeng.android.util.Suppliers;
 import com.oasisfeng.island.IslandApplication;
-
-import java.util.function.Supplier;
 
 
 /**
