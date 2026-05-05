@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.oasisfeng.deagle'
+    compileSdkVersion 34
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 34
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+    implementation 'net.sourceforge.streamsupport:android-retrostreams:1.7.0'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'          // Reference to class ParametersAreNonnullByDefault
+    implementation 'androidx.browser:browser:1.0.0'                 // class WebContent (not yet fully decoupled for "runtimeOnly"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'      // class LifecycleViewModelActivity, LifecycleViewModelFragment
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.5.1'  // class NonNullMutableLiveData
+    implementation 'androidx.appcompat:appcompat:1.0.2'                // class Dialogs
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'          // class RecyclerViewBindings & BindingRecyclerViewAdapter
+    implementation 'com.google.android.material:material:1.0.0'        // class BottomSheetBindingAdapter
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+}
